@@ -1,9 +1,14 @@
 ﻿Stopwatch stopwatch = new Stopwatch();
 
+Console.WriteLine("*****************************************************************");
+Console.WriteLine("                            STOPWATCH               ");
+Console.WriteLine("*****************************************************************");
+
 while (true)
 {
     if (stopwatch.IsRunning == false)
     {
+        Console.WriteLine();
         Console.Write("Enter 'start' to start stopwatch or 'exit' to exit program: ");
     }
 
@@ -17,16 +22,18 @@ while (true)
     {
         stopwatch.IsRunning = true;
         var startTime = stopwatch.Start();
-        Console.WriteLine("Started. " + startTime.ToString("T"));
+        Console.WriteLine("Started. " + (startTime - startTime));
     }
 
     else if (input.ToLower() == "start" && stopwatch.IsRunning == true)
     {
-        throw new InvalidOperationException("Stopwatch already running.");
+        Console.WriteLine("Stopwatch is already running");
+        continue;
     }
     else if (input.ToLower() == "stop" && stopwatch.IsRunning == false)
     {
-        throw new InvalidOperationException("Stopwatch already stopped.");
+        Console.WriteLine("Stopwatch is already stopped");
+        continue;
     }
 
     else if (input.ToLower() == "stop")
@@ -34,16 +41,19 @@ while (true)
         stopwatch.IsRunning = false;
         var endTime = stopwatch.Stop();
         Console.WriteLine("Stopped. Duration: " + stopwatch.Duration);
+        Console.WriteLine();
+        Console.WriteLine("____________________________________________________________");
     }
 
     else if (input.ToLower() == "exit")
     {
+        Console.WriteLine("Exited");
         break;
     }
 
     else
     {
-        Console.WriteLine("Invalid Input.");
+        Console.WriteLine("Invalid Input");
         continue;
     }
 }
